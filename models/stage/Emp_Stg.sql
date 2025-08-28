@@ -14,4 +14,5 @@
                 )"
                 ]
                 )}}
-                select * from SOURCEDB.SOURCESCHEMA.SRC_EMPLOYEES
+                
+                select * from {{source('SRC_YASH','SRC_EMPLOYEES')}}
