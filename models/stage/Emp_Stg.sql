@@ -1,14 +1,17 @@
 {{config (materialized= 'table',
           pre_hook =  ["
-                insert into Audityash(
+                insert into AUDIT_SCHEMA(
                 MODEL_NAME,
-                ID NUMBER,
+                ID,
                 START_TIME,
                 END_TIME,
                 USER_NAME) values (
                 'EMP_Stg.sql',
                 '{{invocation_id}}',
                 current_timestamp,
-                current_user)"])}}
-
-select * from SOURCEDB.SOURCESCHEMA.SRC_EMPLOYEES
+                null,
+                current_user
+                )"
+                ]
+                )}}
+                select * from SOURCEDB.SOURCESCHEMA.SRC_EMPLOYEES
