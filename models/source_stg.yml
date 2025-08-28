@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: SRC_YASH
+    database: SOURCEDB
+    schema: SOURCESCHEMA
+    tables:
+    - name: SRC_COUNTRIES
+      description: "countries table"
+    - name: SRC_DEPARTMENTS 
+      description: "Department table"
+      columns:
+        - name: EMPLOYEE_ID
+          description: "Primary key"
+          tests:
+            - unique
+            - not_null
+
+    - name: SRC_EMPLOYEES
+      description: "employees table"
+    - name: SRC_JOBS
+      description: "jobs table"
+    - name: SRC_LOCATIONS
+      description: "location table"
+    - name: SRC_REGIONS
+      description: "region table"
+      loaded_at_field: LOAD_TIME
+      freshness: 
+        error_after:
+          count: 2
+          period: day
+        warn_after:
+          count: 1
+          period: day
+      
+
